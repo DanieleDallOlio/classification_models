@@ -59,7 +59,7 @@ def get_bn_params(**params):
 
 class residual_conv_block(tf.keras.layers.Layer):
 
-  def __init__(filters, stage, block, strides=(1, 1), attention=None, cut='pre'):
+  def __init__(self, filters, stage, block, strides=(1, 1), attention=None, cut='pre', **kwargs):
     """The identity block is the block that has no conv layer at shortcut.
     # Arguments
         input_tensor: input tensor
@@ -72,6 +72,7 @@ class residual_conv_block(tf.keras.layers.Layer):
     # Returns
         Output tensor for the block.
     """
+    super(residual_conv_block, self).__init__(**kwargs)
 
     if cut!="pre" and cut!="post":
       raise ValueError('Cut type not in ["pre", "post"]')
@@ -117,7 +118,7 @@ class residual_conv_block(tf.keras.layers.Layer):
 
 class residual_bottleneck_block(tf.keras.layers.Layer):
 
-  def __init__(filters, stage, block, strides=None, attention=None, cut='pre'):
+  def __init__(self, filters, stage, block, strides=None, attention=None, cut='pre', **kwargs):
     """The identity block is the block that has no conv layer at shortcut.
     # Arguments
         input_tensor: input tensor
@@ -130,6 +131,7 @@ class residual_bottleneck_block(tf.keras.layers.Layer):
     # Returns
         Output tensor for the block.
     """
+    super(residual_bottleneck_block, self).__init__(**kwargs)
     if cut!="pre" and cut!="post":
       raise ValueError('Cut type not in ["pre", "post"]')
     self.cut = cut
@@ -183,7 +185,7 @@ class residual_bottleneck_block(tf.keras.layers.Layer):
 
 
 class ResNet(tf.keras.Model):
-  def __init__(model_params, input_shape=None, input_tensor=None, include_top=True,
+  def __init__(self, model_params, input_shape=None, input_tensor=None, include_top=True,
                classes=1000, weights='imagenet', **kwargs):
     """Instantiates the ResNet, SEResNet architecture.
     Optionally loads weights pre-trained on ImageNet.
@@ -212,6 +214,7 @@ class ResNet(tf.keras.Model):
         ValueError: in case of invalid argument for `weights`,
             or invalid input shape.
     """
+    super(ResNet, self).__init__(**kwargs)
     global backend, layers, models, keras_utils
     backend, layers, models, keras_utils = get_submodules_from_kwargs(kwargs)
     self.model_params = model_params
