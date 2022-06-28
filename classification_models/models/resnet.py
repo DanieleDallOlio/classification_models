@@ -301,7 +301,7 @@ MODELS_PARAMS = {
 }
 
 
-def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet18'],
         input_shape=input_shape,
@@ -309,11 +309,12 @@ def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet34'],
         input_shape=input_shape,
@@ -321,11 +322,12 @@ def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet50'],
         input_shape=input_shape,
@@ -333,11 +335,12 @@ def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet101'],
         input_shape=input_shape,
@@ -345,11 +348,12 @@ def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet152'],
         input_shape=input_shape,
@@ -357,11 +361,12 @@ def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['seresnet18'],
         input_shape=input_shape,
@@ -369,11 +374,12 @@ def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
 
-def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, **kwargs):
+def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
     return ResNet(
         MODELS_PARAMS['seresnet34'],
         input_shape=input_shape,
@@ -381,6 +387,7 @@ def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         include_top=include_top,
         classes=classes,
         weights=weights,
+        outs=False,
         **kwargs
     )
 
