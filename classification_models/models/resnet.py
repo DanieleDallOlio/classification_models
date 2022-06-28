@@ -309,7 +309,7 @@ def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -322,7 +322,7 @@ def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -335,7 +335,7 @@ def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -348,7 +348,7 @@ def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -361,7 +361,7 @@ def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -374,7 +374,7 @@ def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
@@ -387,7 +387,7 @@ def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         include_top=include_top,
         classes=classes,
         weights=weights,
-        outs=False,
+        outs=outs,
         **kwargs
     )
 
