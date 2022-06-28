@@ -202,7 +202,7 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
 
     global backend, layers, models, keras_utils
     backend, layers, models, keras_utils = get_submodules_from_kwargs(kwargs)
-    outs = []
+    out = []
 
     if input_tensor is None:
         img_input = layers.Input(shape=input_shape, name='data')
@@ -233,7 +233,7 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
     x = layers.Activation('relu', name='relu0')(x)
     x = layers.ZeroPadding2D(padding=(1, 1))(x)
     x = layers.MaxPooling2D((3, 3), strides=(2, 2), padding='valid', name='pooling0')(x)
-    outs.append(x)
+    out.append(x)
 
     # resnet body
     for stage, rep in enumerate(model_params.repetitions):
@@ -253,18 +253,18 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
             else:
                 x = ResidualBlock(filters, stage, block, strides=(1, 1),
                                   cut='pre', attention=Attention)(x)
-            outs.append(x)
+            out.append(x)
 
     x = layers.BatchNormalization(name='bn1', **bn_params)(x)
     x = layers.Activation('relu', name='relu1')(x)
-    outs.append(x)
+    out.append(x)
 
     # resnet top
     if include_top:
         x = layers.GlobalAveragePooling2D(name='pool1')(x)
         x = layers.Dense(classes, name='fc1')(x)
         x = layers.Activation('softmax', name='softmax')(x)
-        outs.append(x)
+        out.append(x)
 
     # Ensure that the model takes into account any potential predecessors of `input_tensor`.
     if input_tensor is not None:
@@ -273,7 +273,7 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
         inputs = img_input
 
     # Create model.
-    x = outs if outs else x
+    x = out if outs else x
     model = models.Model(inputs, x)
 
     if weights:
