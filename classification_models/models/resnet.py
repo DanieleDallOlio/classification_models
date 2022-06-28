@@ -273,7 +273,7 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
         inputs = img_input
 
     # Create model.
-    x = out[local_task_idx] if outs else x
+    x = [out[i] for i in local_task_idx] if outs else x
     model = models.Model(inputs, x)
 
     if weights:
