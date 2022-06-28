@@ -171,7 +171,7 @@ def residual_bottleneck_block(filters, stage, block, strides=None, attention=Non
 
 
 def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
-           classes=1000, weights='imagenet', outs=False, **kwargs):
+           classes=1000, weights='imagenet', outs=False, local_task_idx=-1, **kwargs):
     """Instantiates the ResNet, SEResNet architecture.
     Optionally loads weights pre-trained on ImageNet.
     Note that the data format convention used by the model is
@@ -273,7 +273,7 @@ def ResNet(model_params, input_shape=None, input_tensor=None, include_top=True,
         inputs = img_input
 
     # Create model.
-    x = out if outs else x
+    x = out[local_task_idx] if outs else x
     model = models.Model(inputs, x)
 
     if weights:
@@ -301,7 +301,7 @@ MODELS_PARAMS = {
 }
 
 
-def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet18'],
         input_shape=input_shape,
@@ -310,11 +310,12 @@ def ResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet34'],
         input_shape=input_shape,
@@ -323,11 +324,12 @@ def ResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet50'],
         input_shape=input_shape,
@@ -336,11 +338,12 @@ def ResNet50(input_shape=None, input_tensor=None, weights=None, classes=1000, in
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet101'],
         input_shape=input_shape,
@@ -349,11 +352,12 @@ def ResNet101(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['resnet152'],
         input_shape=input_shape,
@@ -362,11 +366,12 @@ def ResNet152(input_shape=None, input_tensor=None, weights=None, classes=1000, i
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['seresnet18'],
         input_shape=input_shape,
@@ -375,11 +380,12 @@ def SEResNet18(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
 
-def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, **kwargs):
+def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, include_top=True, outs=False, local_task_idx=-1, **kwargs):
     return ResNet(
         MODELS_PARAMS['seresnet34'],
         input_shape=input_shape,
@@ -388,6 +394,7 @@ def SEResNet34(input_shape=None, input_tensor=None, weights=None, classes=1000, 
         classes=classes,
         weights=weights,
         outs=outs,
+        local_task_idx=local_task_idx,
         **kwargs
     )
 
